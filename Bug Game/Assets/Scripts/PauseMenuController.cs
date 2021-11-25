@@ -7,7 +7,7 @@ public class PauseMenuController : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject optionsMenu;
 
-    private bool isPlaying;
+    public static bool isPlaying;
 
     private void Start() {
         ResumeGame();

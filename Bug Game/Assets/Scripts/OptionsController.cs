@@ -60,6 +60,7 @@ public class OptionsController : MonoBehaviour
         if (PlayerPrefs.HasKey("Sensitivity")) {
             cineCam.m_XAxis.m_MaxSpeed = 600 * PlayerPrefs.GetFloat("Sensitivity");
             cineCam.m_YAxis.m_MaxSpeed = 4 * PlayerPrefs.GetFloat("Sensitivity");
+            CameraController.sensitivity = 150f * PlayerPrefs.GetFloat("Sensitivity");
             sensSlider.value = PlayerPrefs.GetFloat("Sensitivity");
         }
     }
@@ -92,6 +93,7 @@ public class OptionsController : MonoBehaviour
     public void SetSensitivity(float sens) {
         cineCam.m_XAxis.m_MaxSpeed = 600 * sens;
         cineCam.m_YAxis.m_MaxSpeed = 4 * sens;
+        CameraController.sensitivity = 150f * sens;
         PlayerPrefs.SetFloat("Sensitivity", sens);
     }
 }
