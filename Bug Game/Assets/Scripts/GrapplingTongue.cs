@@ -8,7 +8,7 @@ public class GrapplingTongue : MonoBehaviour {
     private Vector3 grapplePoint;
     public LayerMask grappleableMask;
     public Transform tongue, player;
-    private float maxDistance = 20f;
+    public float maxDistance = 20f;
     public bool isGrappling;
     public Animator anim;
 

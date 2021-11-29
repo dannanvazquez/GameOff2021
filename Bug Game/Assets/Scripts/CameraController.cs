@@ -54,8 +54,8 @@ public class CameraController : MonoBehaviour {
 
             Debug.DrawRay(cameraLock.transform.position, -cameraLock.transform.forward * 5f, Color.green);
             RaycastHit hit;
-            if (Physics.Raycast(cameraLock.transform.position, -cameraLock.transform.forward, out hit, 5f, collisionMask)) {
-                thirdPersonCam.transform.position = hit.point - hit.transform.InverseTransformPoint(hit.point);
+            if (Physics.Raycast(cameraLock.transform.position, -cameraLock.transform.forward, out hit, 6f, collisionMask)) {
+                thirdPersonCam.transform.position = hit.point + cameraLock.transform.forward * 1f;
             }
             else {
                 thirdPersonCam.transform.localPosition = new Vector3(0f, 0f, -5f);

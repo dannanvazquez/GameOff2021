@@ -42,7 +42,11 @@ public class OptionsController : MonoBehaviour
         resDropdown.RefreshShownValue();
 
         if (PlayerPrefs.HasKey("Volume")) {
-            audioMixer.SetFloat("volume", PlayerPrefs.GetFloat("Volume"));
+            if (PlayerPrefs.GetFloat("Volume") > 0) {
+                audioMixer.SetFloat("MasterVolume", Mathf.Log10(PlayerPrefs.GetFloat("Volume")) * 40);
+            } else {
+                audioMixer.SetFloat("MasterVolume", -80f);
+            }
             volumeSlider.value = PlayerPrefs.GetFloat("Volume");
         }
 
@@ -66,7 +70,11 @@ public class OptionsController : MonoBehaviour
     }
 
     public void SetVolume(float volume) {
-        audioMixer.SetFloat("volume", volume);
+        if (volume > 0) {
+            audioMixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 40);
+        } else {
+            audioMixer.SetFloat("MasterVolume", -80f);
+        }
         PlayerPrefs.SetFloat("Volume", volume);
     }
 
