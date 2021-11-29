@@ -6,6 +6,7 @@ public class PauseMenuController : MonoBehaviour
 {
     public GameObject pauseMenu;
     public GameObject optionsMenu;
+    public GameObject overlayEffect;
 
     public static bool isPlaying;
 
@@ -29,6 +30,7 @@ public class PauseMenuController : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         pauseMenu.SetActive(true);
+        overlayEffect.SetActive(true);
     }
 
     public void ResumeGame() {
@@ -38,5 +40,6 @@ public class PauseMenuController : MonoBehaviour
         Cursor.visible = false;
         pauseMenu.SetActive(false);
         optionsMenu.SetActive(false);
+        overlayEffect.SetActive(false);
     }
 }
