@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GrapplingTongue : MonoBehaviour {
     public CharacterController controller;
+    public CameraController cameraController;
     private LineRenderer lr;
     private Vector3 grapplePoint;
     public LayerMask grappleableMask;
@@ -19,10 +20,10 @@ public class GrapplingTongue : MonoBehaviour {
     }
 
     private void Update() {
-        if (Input.GetMouseButtonDown(0) && PauseMenuController.isPlaying) {
+        if (Input.GetMouseButtonDown(0) && PauseMenuController.isPlaying && cameraController.isAiming) {
             StartGrapple();
         }
-        else if (Input.GetMouseButtonUp(0) && PauseMenuController.isPlaying) {
+        else if ((Input.GetMouseButtonUp(0) || !cameraController.isAiming) && PauseMenuController.isPlaying) {
             StopGrapple();
         }
 

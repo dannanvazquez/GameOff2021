@@ -3846,7 +3846,7 @@ ParticleSystem:
       properties: 0
       emitProbability: 1
   LightsModule:
-    enabled: 1
+    enabled: 0
     ratio: 0
     light: {fileID: 7503137501384030287, guid: 9b03db43f2501454baf756a75716d54d, type: 3}
     randomDistribution: 1
@@ -4794,7 +4794,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e823cd5b5d27c0f4b8256e7c12ee3e6d, type: 2}
+  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4869,6 +4869,7 @@ Transform:
   m_Children:
   - {fileID: 2863288696383964717}
   - {fileID: 4078501106738317415}
+  - {fileID: 6798288137045782244}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4968,3 +4969,85 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6022267874352886604, guid: b41b95f9b54b72746b6d00993ed3d02c, type: 3}
+--- !u!1001 &5634724748457197280
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5138565961011015077}
+    m_Modifications:
+    - target: {fileID: 1182985757325332484, guid: 9b03db43f2501454baf756a75716d54d, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1182985757325332484, guid: 9b03db43f2501454baf756a75716d54d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -227.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 1182985757325332484, guid: 9b03db43f2501454baf756a75716d54d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 91.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 1182985757325332484, guid: 9b03db43f2501454baf756a75716d54d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 564.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 1182985757325332484, guid: 9b03db43f2501454baf756a75716d54d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1182985757325332484, guid: 9b03db43f2501454baf756a75716d54d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1182985757325332484, guid: 9b03db43f2501454baf756a75716d54d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1182985757325332484, guid: 9b03db43f2501454baf756a75716d54d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1182985757325332484, guid: 9b03db43f2501454baf756a75716d54d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1182985757325332484, guid: 9b03db43f2501454baf756a75716d54d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1182985757325332484, guid: 9b03db43f2501454baf756a75716d54d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496728526972326132, guid: 9b03db43f2501454baf756a75716d54d, type: 3}
+      propertyPath: m_Name
+      value: Point Light-Flame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7503137501384030287, guid: 9b03db43f2501454baf756a75716d54d, type: 3}
+      propertyPath: m_Range
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7503137501384030287, guid: 9b03db43f2501454baf756a75716d54d, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7503137501384030287, guid: 9b03db43f2501454baf756a75716d54d, type: 3}
+      propertyPath: m_Color.g
+      value: 0.18670417
+      objectReference: {fileID: 0}
+    - target: {fileID: 7503137501384030287, guid: 9b03db43f2501454baf756a75716d54d, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 7503137501384030287, guid: 9b03db43f2501454baf756a75716d54d, type: 3}
+      propertyPath: m_Intensity
+      value: 20
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9b03db43f2501454baf756a75716d54d, type: 3}
+--- !u!4 &6798288137045782244 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1182985757325332484, guid: 9b03db43f2501454baf756a75716d54d, type: 3}
+  m_PrefabInstance: {fileID: 5634724748457197280}
+  m_PrefabAsset: {fileID: 0}

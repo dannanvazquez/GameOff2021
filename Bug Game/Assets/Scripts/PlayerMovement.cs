@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour {
     public float runSpeed = 9f;
     public float jump = 3f;
     public float gravity = -9.81f;
-    public float groundDistance = 0.2f;
+    public float groundDistance = 0.5f;
     public float turnSmoothTime = 0.1f;
 
     private float turnSmoothVelocity;
@@ -37,7 +37,6 @@ public class PlayerMovement : MonoBehaviour {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
-        Debug.Log("horiz: " + horizontal + ", vert: " + vertical);
 
         if (direction.magnitude >= 0.1f) {
             if (Input.GetKey(KeyCode.LeftShift)) {
@@ -77,9 +76,12 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         if (isGrounded) {
+            Debug.Log("isGrounded");
             if (Input.GetButtonDown("Jump")) {
                 Jump();
             }
+        } else {
+            Debug.Log("NOT GROUNDED");
         }
 
         velocity.y += gravity * Time.deltaTime;
