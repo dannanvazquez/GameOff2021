@@ -46,7 +46,21 @@ public class PlayerMovement : MonoBehaviour {
                 Walk();
             }
 
-            anim.SetFloat("Speed", vertical, 0.1f, Time.deltaTime);
+            if(cameraController.isAiming) {
+                if (vertical == 0) {
+                    anim.SetFloat("moveX", horizontal, 0.1f, Time.deltaTime);
+                    anim.SetFloat("moveY", 0, 0.1f, Time.deltaTime);
+                }
+                else {
+                    anim.SetFloat("moveX", 0, 0.1f, Time.deltaTime);
+                    anim.SetFloat("moveY", vertical, 0.1f, Time.deltaTime);
+                }
+            } else {
+                if(horizontal + vertical != 0) {
+                    anim.SetFloat("moveX", 0, 0.1f, Time.deltaTime);
+                    anim.SetFloat("moveY", 1, 0.1f, Time.deltaTime);
+                }
+            }
 
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + CameraController.currentCam.eulerAngles.y;
 
@@ -75,7 +89,8 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void Idle() {
-        anim.SetFloat("Speed", 0, 0.1f, Time.deltaTime);
+        anim.SetFloat("moveX", 0, 0.1f, Time.deltaTime);
+        anim.SetFloat("moveY", 0, 0.1f, Time.deltaTime);
     }
 
     private void Walk() {
