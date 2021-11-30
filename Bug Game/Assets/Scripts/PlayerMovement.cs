@@ -63,6 +63,9 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         if (isGrounded) {
+            if (!grapple.isGrappling) {
+                grapple.grappleMomentum = 0f;
+            }
             if (Input.GetButtonDown("Jump")) {
                 Jump();
             }

@@ -9,10 +9,14 @@ public class GrapplingTongue : MonoBehaviour {
     public LayerMask grappleableMask;
     public Transform tongue, player;
     public float maxDistance = 20f;
+    public float grappleMomentum = 0f;
     public bool isGrappling;
     public Animator anim;
 
-    private float grappleSpeed = 20f;
+    private float grappleMinSpeed = 5f;
+    private float grappleMaxSpeed = 25f;
+    private float initialGrappleDistance = 0f;
+    private Vector3 grappleDirection = Vector3.zero;
 
     private void Awake() {
         lr = GetComponent<LineRenderer>();
@@ -26,10 +30,20 @@ public class GrapplingTongue : MonoBehaviour {
             StopGrapple();
         }
 
+        
+        Vector3 offset = grapplePoint - player.position;
         if (isGrappling) {
-            Vector3 offset = grapplePoint - player.position;
+            float distanceRatio = initialGrappleDistance / Mathf.PI;
+            grappleMomentum = Mathf.Max(Mathf.Sin(offset.magnitude / distanceRatio) * grappleMaxSpeed, grappleMinSpeed);
+        } 
+        else {
+            grappleMomentum = Mathf.Max(grappleMomentum - .01f, 0);
+        }
+        if (grappleMomentum > 0) {
             if (offset.magnitude > 0.1f) {
-                controller.Move(offset.normalized * grappleSpeed * Time.deltaTime);
+                controller.Move(grappleDirection.normalized * grappleMomentum * Time.deltaTime);
+            } else {
+                grappleMomentum = 0f;
             }
         }
     }
@@ -51,6 +65,8 @@ public class GrapplingTongue : MonoBehaviour {
         RaycastHit hit;
         if (Physics.Raycast(CameraController.currentCam.position, CameraController.currentCam.forward, out hit, camMaxDistance, grappleableMask)) {
             grapplePoint = hit.point;
+            grappleDirection = grapplePoint - player.position;
+            initialGrappleDistance = grappleDirection.magnitude;
             isGrappling = true;
             lr.positionCount = 2;
             anim.SetBool("IsGrappling", true);
