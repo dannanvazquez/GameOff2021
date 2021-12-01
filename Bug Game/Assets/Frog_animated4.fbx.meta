@@ -1,8 +1,38 @@
 fileFormatVersion: 2
-guid: 68152757534cf7b42afdeae2900fb4d8
+guid: e233cc2cb5b6d574abf29ce1a4764b07
 ModelImporter:
   serializedVersion: 20200
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -2745019296244642907
+    second: IdleDance
+  - first:
+      74: -2697208041810842605
+    second: Frog_rig|fda
+  - first:
+      74: 8764491614415598991
+    second: Frog_rig|Idle
+  - first:
+      74: -2624774899969206044
+    second: Frog_rig|IdleDance
+  - first:
+      74: 101303575537757739
+    second: Frog_rig|Jump
+  - first:
+      74: 178986465473536715
+    second: Frog_rig|SideStepLeft
+  - first:
+      74: -4122588523078134742
+    second: Frog_rig|SideStepRight
+  - first:
+      74: -2640505287882225091
+    second: Frog_rig|Tongue
+  - first:
+      74: -8006104840642099900
+    second: Frog_rig|Walk
+  - first:
+      74: -7600079556816472316
+    second: Frog_Mesh|fda
   externalObjects: {}
   materials:
     materialImportMode: 2

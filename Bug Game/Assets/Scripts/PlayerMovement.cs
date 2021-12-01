@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour {
     public float runSpeed = 9f;
     public float jump = 3f;
     public float gravity = -9.81f;
-    public float groundDistance = 0.2f;
+    public float groundDistance = 0.5f;
     public float turnSmoothTime = 0.1f;
 
     private float turnSmoothVelocity;
@@ -37,7 +37,6 @@ public class PlayerMovement : MonoBehaviour {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
-        Debug.Log("horiz: " + horizontal + ", vert: " + vertical);
 
         if (direction.magnitude >= 0.1f) {
             if (Input.GetKey(KeyCode.LeftShift)) {
@@ -46,7 +45,21 @@ public class PlayerMovement : MonoBehaviour {
                 Walk();
             }
 
-            anim.SetFloat("Speed", vertical, 0.1f, Time.deltaTime);
+            if(cameraController.isAiming) {
+                if (vertical == 0) {
+                    anim.SetFloat("moveX", horizontal, 0.1f, Time.deltaTime);
+                    anim.SetFloat("moveY", 0, 0.1f, Time.deltaTime);
+                }
+                else {
+                    anim.SetFloat("moveX", 0, 0.1f, Time.deltaTime);
+                    anim.SetFloat("moveY", vertical, 0.1f, Time.deltaTime);
+                }
+            } else {
+                if(horizontal + vertical != 0) {
+                    anim.SetFloat("moveX", 0, 0.1f, Time.deltaTime);
+                    anim.SetFloat("moveY", 1, 0.1f, Time.deltaTime);
+                }
+            }
 
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + CameraController.currentCam.eulerAngles.y;
 
@@ -66,9 +79,12 @@ public class PlayerMovement : MonoBehaviour {
             if (!grapple.isGrappling) {
                 grapple.grappleMomentum = 0f;
             }
+            Debug.Log("isGrounded");
             if (Input.GetButtonDown("Jump")) {
                 Jump();
             }
+        } else {
+            Debug.Log("NOT GROUNDED");
         }
 
         velocity.y += gravity * Time.deltaTime;
@@ -78,7 +94,8 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void Idle() {
-        anim.SetFloat("Speed", 0, 0.1f, Time.deltaTime);
+        anim.SetFloat("moveX", 0, 0.1f, Time.deltaTime);
+        anim.SetFloat("moveY", 0, 0.1f, Time.deltaTime);
     }
 
     private void Walk() {
