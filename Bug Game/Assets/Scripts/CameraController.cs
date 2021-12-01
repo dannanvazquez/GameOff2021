@@ -6,6 +6,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour {
     public GameObject aimReticle;
     public GameObject cameraLock;
+    public GameObject originalCameraLock;
     public GameObject mainCam;
     public GameObject thirdPersonCam;
     public bool isAiming;
@@ -52,13 +53,22 @@ public class CameraController : MonoBehaviour {
             cameraLock.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
             transform.Rotate(Vector3.up * mouseX);
 
-            Debug.DrawRay(cameraLock.transform.position, -cameraLock.transform.forward * 25f, Color.green);
+            Debug.DrawRay(cameraLock.transform.position, -cameraLock.transform.forward * 26f, Color.green);
             RaycastHit hit;
             if (Physics.Raycast(cameraLock.transform.position, -cameraLock.transform.forward, out hit, 26f, collisionMask)) {
                 thirdPersonCam.transform.position = hit.point + cameraLock.transform.forward * 1f;
             }
             else {
                 thirdPersonCam.transform.localPosition = new Vector3(0f, 0f, -5f);
+            }
+
+            Debug.DrawRay(originalCameraLock.transform.position, originalCameraLock.transform.right * 7.5f, Color.yellow);
+            RaycastHit hit2;
+            if (Physics.Raycast(originalCameraLock.transform.position, originalCameraLock.transform.right, out hit2, 7.5f, collisionMask)) {
+                cameraLock.transform.position = hit2.point + -originalCameraLock.transform.right * 1f;
+            }
+            else {
+                cameraLock.transform.localPosition = new Vector3(1.5f, 0.5f, 0f);
             }
         }
 
