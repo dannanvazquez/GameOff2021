@@ -62,6 +62,8 @@ public class CameraController : MonoBehaviour {
                 thirdPersonCam.transform.localPosition = new Vector3(0f, 0f, -5f);
             }
 
+            //The block of code below is to get started for preventing the camera from clipping
+            /*
             Debug.DrawRay(originalCameraLock.transform.position, originalCameraLock.transform.right * 7.5f, Color.yellow);
             RaycastHit hit2;
             if (Physics.Raycast(originalCameraLock.transform.position, originalCameraLock.transform.right, out hit2, 7.5f, collisionMask)) {
@@ -69,7 +71,7 @@ public class CameraController : MonoBehaviour {
             }
             else {
                 cameraLock.transform.localPosition = new Vector3(1.5f, 0.5f, 0f);
-            }
+            }*/
         }
 
     }
