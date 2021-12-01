@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour {
     public float gravity = -9.81f;
     public float groundDistance = 0.5f;
     public float turnSmoothTime = 0.1f;
-
+    
     private float turnSmoothVelocity;
     private Vector3 velocity;
     private bool isGrounded;
@@ -34,8 +34,13 @@ public class PlayerMovement : MonoBehaviour {
             velocity.y = -2f;
         }
 
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        float horizontal = 0f;
+        float vertical = 0f;
+
+        if (!grapple.isGrappling) {
+            horizontal = Input.GetAxisRaw("Horizontal");
+            vertical = Input.GetAxisRaw("Vertical");
+        }
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
         if (direction.magnitude >= 0.1f) {
@@ -76,15 +81,12 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         if (isGrounded) {
-            Debug.Log("isGrounded");
             if (!grapple.isGrappling) {
                 grapple.grappleMomentum = 0f;
             }
             if (Input.GetButtonDown("Jump")) {
                 Jump();
             }
-        } else {
-            Debug.Log("NOT GROUNDED");
         }
 
         velocity.y += gravity * Time.deltaTime;

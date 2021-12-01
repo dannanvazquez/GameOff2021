@@ -14,8 +14,8 @@ public class GrapplingTongue : MonoBehaviour {
     public bool isGrappling;
     public Animator anim;
 
-    private float grappleMinSpeed = 5f;
-    private float grappleMaxSpeed = 25f;
+    private float grappleMinSpeed = 10f;
+    private float grappleMaxSpeed = 50f;
     private float initialGrappleDistance = 0f;
     private Vector3 grappleDirection = Vector3.zero;
 
@@ -40,6 +40,7 @@ public class GrapplingTongue : MonoBehaviour {
         else {
             grappleMomentum = Mathf.Max(grappleMomentum - .01f, 0);
         }
+        
         if (grappleMomentum > 0) {
             if (offset.magnitude > 0.1f) {
                 controller.Move(grappleDirection.normalized * grappleMomentum * Time.deltaTime);
@@ -71,7 +72,6 @@ public class GrapplingTongue : MonoBehaviour {
             isGrappling = true;
             lr.positionCount = 2;
             anim.SetBool("IsGrappling", true);
-            Debug.Log("GRAPPLE");
         }
     }
 

@@ -52,9 +52,9 @@ public class CameraController : MonoBehaviour {
             cameraLock.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
             transform.Rotate(Vector3.up * mouseX);
 
-            Debug.DrawRay(cameraLock.transform.position, -cameraLock.transform.forward * 5f, Color.green);
+            Debug.DrawRay(cameraLock.transform.position, -cameraLock.transform.forward * 25f, Color.green);
             RaycastHit hit;
-            if (Physics.Raycast(cameraLock.transform.position, -cameraLock.transform.forward, out hit, 6f, collisionMask)) {
+            if (Physics.Raycast(cameraLock.transform.position, -cameraLock.transform.forward, out hit, 26f, collisionMask)) {
                 thirdPersonCam.transform.position = hit.point + cameraLock.transform.forward * 1f;
             }
             else {
